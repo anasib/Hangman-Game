@@ -62,7 +62,7 @@ window.onload = function () {
 
             correctLetter.push(key);
             dashes.push(key);
-            // correctGuess.innerText = "Correct Letters: " + dashes.join(' ');
+            correctGuess.innerText = "Correct Letters: " + dashes.join(' ');
             wrongGuess.innerText = "Wrong Guesses: " + correctLetter.join(' ');
 
             if (randomWord.indexOf(key) > -1) {
