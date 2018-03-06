@@ -2,10 +2,11 @@
 
 <head>
     <title>Hangman-Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/javascript" href="assets/javascript/game.js">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
 </head>
 
 <body>
@@ -23,34 +24,25 @@
         <!-- Image Column -->
         <div id="mainRow" class="row">
             <div id="imageSection" class="col-sm-3 col-md-6 col-md-12">
-                <img id="alPacino" src="assets/images/al_pacino.jpg" alt="al_pacino">
-                <img id="bradPitt" src="assets/images/brad_pitt.jpg" alt="brad_pitt">
-                <img id="tomCruise" src="assets/images/tom_cruise.jpeg" alt="tom_cruise">
-                <img id="tomHanks" src="assets/images/tom_hanks.jpg" alt="tom_hanks">
-                <img id="robertDeniro" src="assets/images/robert_deniro.jpg" alt="robert_deniro">
+                <img id="alPacino" src="assets/images/al_pacino.jpg" alt="al pacino">
+                <img id="bradPitt" src="assets/images/brad_pitt.jpg" alt="brad pitt">
+                <img id="tomCruise" src="assets/images/tom_cruise.jpeg" alt="tom cruise">
+                <img id="tomHanks" src="assets/images/tom_hanks.jpg" alt="tom hanks">
+                <img id="robertDeniro" src="assets/images/robert_deniro.jpg" alt="robert deniro">
             </div>
 
             <!-- Rules Column -->
-            <div id="textSection" class="col-sm-3 col-md-6 col-md-12">
-                <p id="pressKey">
-                    Press Any Key to Get Started!
-                </p>
-                <p id="winRatio">
-                    Wins:
-                </p>
-                <p id="currentName">
-                    Current Name: 
-                </p>
-                <p id="remainingGuess">
-                    Number of guesses remaining is:
-                </p>
-                <p id="guessedLetters">
-                    Letters already guessed:
-                </p>
+            <div class="col-sm-3 col-md-6 col-md-12 guess-container">
+                <p id="pressKey">Press Any Key to Get Started!</p>
+                <p id="winRatio">Wins:</p>
+                <p id="loseRatio">Loss:</p>
+                <p id="correct">Correct Guess:</p>
+                <p id="remainingGuess">12</p>
+                <p id="wrong">Wrong Guesses:</p>
             </div>
         </div>
     </div>
-
+    <script src="assets/javascript/game.js"></script>
 </body>
 
 </html>

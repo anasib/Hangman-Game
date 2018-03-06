@@ -14,8 +14,7 @@ body {
 
 #currentName {
     padding: 15px;
-    border-bottom: dashed;
-    border-color: white;
+    /* border-color: white; */
 }
 
 .row img {
@@ -26,6 +25,10 @@ body {
 
 #mainRow {
     border: dashed 1px white;
+}
+
+#mainRow img {
+    opacity: 1;
 }
 
 #imageSection {
