@@ -31,7 +31,7 @@ var actor5 = document.getElementById('robertDeniro');
 
 //js code below
 
-$(document).ready(function () {
+window.onload = function () {
 
     underscore = function () {
         for (var i = 0; i < randomWord.length; i++) {
@@ -45,15 +45,14 @@ $(document).ready(function () {
         var key = event.key;
 
         for (var i = 0; i = randomWord.length; i++) {
-
             if (correctLetter.indexOf(key) !== -1) {
                 return false;
             }
-
             if (wrongLetters.indexOf(key) !== -1) {
                 return false;
             }
 
+            //restart game
             function restartGame() {
                 location.reload();
             }
@@ -63,12 +62,15 @@ $(document).ready(function () {
 
             correctLetter.push(key);
             dashes.push(key);
-            correctGuess.innerText = "Correct Letters: " + dashes.join(' ');
+            // correctGuess.innerText = "Correct Letters: " + dashes.join(' ');
             wrongGuess.innerText = "Wrong Guesses: " + correctLetter.join(' ');
 
             if (randomWord.indexOf(key) > -1) {
                 correctLetter.push(' ' + key);
                 dashes[randomWord.indexOf(key)] = key;
+                correctGuess[0].innerHTML = dashes.join(' ');
+                correctGuess[0].innerHTML = correctLetter;
+
 
                 if (dashes.join(' ') === randomWord) {
                     alert("Winner!!!");
@@ -77,7 +79,6 @@ $(document).ready(function () {
 
             } else {
                 wrongLetters.push(' ' + key);
-                dashes[randomWord.indexOf(key)] = key;
                 remainigLetters[0].innerHTML = wrongLetters;
                 guessesLeft--;
 
@@ -87,9 +88,9 @@ $(document).ready(function () {
                 }
             }
 
-            document.getElementById("remainingGuess").innerHTML = guessesLeft;
+            document.querySelector("#remainingGuess").innerHTML = guessesLeft;
 
         }
     }
 
-});
+};
