@@ -7,7 +7,6 @@ var randomWord = randomActorArr[Math.floor(Math.random() * randomActorArr.length
 var correctLetter = [];
 var wrongLetters = [];
 var dashes = [];
-
 var wins = 0;
 var loss = 0;
 var guessesLeft = 12;
@@ -22,6 +21,10 @@ var correctGuess = document.getElementById('correct');
 var wrongGuess = document.getElementById('wrong');
 //wrong letters
 var remainigLetters = document.getElementById('remainingGuess');
+//win
+var winCount = document.getElementById('winRatio');
+//lose
+var loseCount = document.getElementById('loseRatio');
 
 var actor1 = document.getElementById('alpacino');
 var actor2 = document.getElementById('bradPitt');
@@ -35,62 +38,55 @@ window.onload = function () {
 
     underscore = function () {
         for (var i = 0; i < randomWord.length; i++) {
-            dashes.push('_');
+            if(lettersInWord[i] === " ") {
+                dashes.push(" ");
+            } else {
+                dashes.push("-");
+            }
         }
         return dashes;
     }
     underscore();
 
-    document.onkeyup = function (event) {
-        var key = event.key;
+    console.log(dashes.join(''));
 
-        for (var i = 0; i = randomWord.length; i++) {
-            if (correctLetter.indexOf(key) !== -1) {
-                return false;
-            }
-            if (wrongLetters.indexOf(key) !== -1) {
-                return false;
-            }
 
             //restart game
             function restartGame() {
                 location.reload();
             }
 
+    document.onkeyup = function (event) {
+        var key = event.key;
+
+        for (var i = 0; i < randomWord.length; i++) {
+            console.log(key);
+            console.log(lettersInWord[i]);
+            if(key === lettersInWord[i]) {
+                dashes[i] = key;
+            } 
+
             sessionStorage.setItem("wins", wins);
             sessionStorage.setItem("lose", loss);
-
-            correctLetter.push(key);
-            dashes.push(key);
-            correctGuess.innerText = "Correct Letters: " + dashes.join(' ');
-            wrongGuess.innerText = "Wrong Guesses: " + correctLetter.join(' ');
-
-            if (randomWord.indexOf(key) > -1) {
-                correctLetter.push(' ' + key);
-                dashes[randomWord.indexOf(key)] = key;
-                correctGuess[0].innerHTML = dashes.join(' ');
-                correctGuess[0].innerHTML = correctLetter;
-
-
-                if (dashes.join(' ') === randomWord) {
-                    alert("Winner!!!");
-                    return restartGame();
-                }
-
-            } else {
-                wrongLetters.push(' ' + key);
-                remainigLetters[0].innerHTML = wrongLetters;
-                guessesLeft--;
-
-                if (guessesLeft == 0) {
-                    alert("Loser!!!");
-                    return restartGame();
-                }
-            }
-
+            correctGuess.innerText = "Correct Letters: " + dashes.join('');
+            wrongGuess.innerHTML = "Wrong Guesses: " + key;
+    
             document.querySelector("#remainingGuess").innerHTML = guessesLeft;
 
         }
+        guessesLeft--;
+        remainigLetters.innerHTML = "Guesses Left " + guessesLeft;
+
+        if(guessesLeft >= 0) {
+            winCount.innerHTML = "Wins: " + wins;
+        } else {
+            loseCount.innerHTML = "Lose: " + loss;
+        }
+
+
+
+
+        
     }
 
 };
